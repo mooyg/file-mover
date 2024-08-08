@@ -8,7 +8,7 @@ import (
 )
 
 func MoveFile(srcPath string, destPath string) error {
-	fileExists := fileExists(destPath)
+	fileExists := Exists(srcPath)
 
 	if !fileExists {
 		return fmt.Errorf("file already exists")
@@ -40,7 +40,7 @@ func MoveFile(srcPath string, destPath string) error {
 
 }
 
-func fileExists(filename string) bool {
+func Exists(filename string) bool {
 	info, err := os.Stat(filename)
 	if os.IsNotExist(err) {
 		return false

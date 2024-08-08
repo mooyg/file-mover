@@ -1,9 +1,18 @@
 package main
 
-import "github.com/mooyg/file-mover/mover"
+import (
+	"log"
+	"os"
+
+	"github.com/mooyg/file-mover/mover"
+)
 
 func main() {
-	m := mover.NewFileMover("~/Desktop/backup")
+	m, err := mover.NewFileMover("/Users/mooy/Desktop/test")
 
+	if err != nil {
+		log.Fatal("some error occured")
+		os.Exit(0)
+	}
 	m.MoveFiles()
 }
